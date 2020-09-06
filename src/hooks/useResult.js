@@ -20,7 +20,7 @@ export default () => {
         }
     };
     useEffect(() => {
-        searchAPI('Pasta');
+        searchAPI('Burger');
     }, []);
 
     return [searchAPI, results, errorMessage];
