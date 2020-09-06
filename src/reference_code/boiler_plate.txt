@@ -1,0 +1,17 @@
+import React from 'react';
+import {Text, View, StyleSheet} from 'react-native';
+import { FlatList } from 'react-native-gesture-handler';
+
+const ResultsDetail = () => {
+    return (
+        <View>
+            <Text>Results Detail</Text>
+        </View>
+    );
+};
+
+const style = StyleSheet.create({
+
+});
+
+export default ResultsDetail;

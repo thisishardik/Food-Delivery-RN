@@ -1,0 +1,56 @@
+const SearchScreen = () => {
+    
+    const[term, setTerm] = useState("");
+    const [searchAPI, results, errorMessage] = useResults();
+    
+    console.log(results);
+    // const [results, setResults] = useState([]);
+    // const [errorMessage, setErrorMessage] = useState('');
+
+    // const searchAPI = async (searchTerm) => {
+    //     try {
+    //         const response = await yelp.get('search', {
+    //         params: {
+    //             limit: 50,
+    //             term: term,
+    //             location: 'San Jose',
+    //         }
+    //         });
+    //         setResults(response.data['businesses']); 
+    //     } catch (e) {
+    //         setErrorMessage('Something went wrong.');
+    //     }
+        
+    // };
+
+    // useEffect(() => {
+    //     searchAPI('pasta');
+    // }, []);
+    
+    return (
+        <View>
+            <SearchBar 
+                term = {term} 
+                onTermChange = {(newTerm) => setTerm(newTerm)}
+                onTermSubmitted = {() =>  searchAPI(term)}
+            />
+            {errorMessage ? <Text>{errorMessage}</Text> : null} 
+            <Text>We have found {results.length} results.</Text>
+            <ResultsList title = "Cost Effective"/>
+            <ResultsList title = "Bit Pricier"/>
+            <ResultsList title = "Big Spender" />
+        </View>
+    );
+};
+
+
+const filterResultsByPrice = (price) => {
+        return results.filter(result, () => {
+            return result['price'] === price;
+        })
+    };
+    
+    // Means that we will call this function three times for the price that we are looking for. 
+    // For each price as input, we will run the check in the array of 'results' 
+    // and for every 'result' we get, we will check if that is equal to our inputted price.
+    // i.e price === '$' || '$$' || '$$$'
